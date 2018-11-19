@@ -9,6 +9,7 @@ import ui.StackView as StackView;
 import src.TitleScreen as TitleScreen;
 import src.GameScreen as GameScreen;
 import src.soundcontroller as soundcontroller;
+import fbinstant as fbinstant;
 
 /* Your application inherits from GC.Application, which is
  * exported and instantiated when the game is run.
@@ -19,6 +20,10 @@ exports = Class(GC.Application, function () {
 	 * place, but before the resources have been loaded.
 	 */
 	this.initUI = function () {
+		fbinstant.initialise(bind(this, this.start));
+	};
+
+	this.start = function (opts) {
 		var titlescreen = new TitleScreen(),
 				gamescreen = new GameScreen();
 
