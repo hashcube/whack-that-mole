@@ -1,4 +1,4 @@
-import AudioManager;
+import AudioManager from 'AudioManager';
 
 exports.sound = null;
 

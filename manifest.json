@@ -10,8 +10,7 @@
   },
   "appID": "7ba6726c608a43fd8b607d27841e2774",
   "dependencies": {
-    "devkit-core": "https://github.com/hashcube/devkit-core#v4.5.3-52-0",
-    "fbinstant": "git@github.com:hashcube/fbinstant.git#master"
+    "devkit-core": "https://github.com/gameclosure/devkit-core#es6"
   },
   "icon": "resources/icons/icon512.png",
   "ios": {

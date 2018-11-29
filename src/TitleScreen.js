@@ -6,27 +6,27 @@
  * and the game screen shown.
  */
 
-import ui.View;
-import ui.ImageView;
+import View from 'ui/View';
+import ImageView from 'ui/ImageView';
 
 /* The title screen is added to the scene graph when it becomes
  * a child of the main application. When this class is instantiated,
  * it adds the start button as a child.
  */
-exports = Class(ui.ImageView, function (supr) {
-	this.init = function (opts) {
+export default class TitleScreen extends View {
+	constructor (opts) {
 		opts = merge(opts, {
 			x: 0,
 			y: 0,
 			image: "resources/images/title_screen.png"
 		});
 
-		supr(this, 'init', [opts]);
+		super(opts);
 
 		this.build();
 	};
 
-	this.build = function() {
+	build () {
 		/* Since the start button is a part the background image,
 		 * we just need to create and position an overlay view that
 		 * will register input events and act as button.
@@ -47,4 +47,4 @@ exports = Class(ui.ImageView, function (supr) {
 			this.emit('titlescreen:start');
 		}));
 	};
-});
+};

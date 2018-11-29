@@ -3,27 +3,29 @@
  */
 
 //sdk imports
-import device;
-import ui.StackView as StackView;
+import device from 'device';
+import StackView from 'ui/StackView';
+import View from 'ui/View';
 //user imports
-import src.TitleScreen as TitleScreen;
-import src.GameScreen as GameScreen;
-import src.soundcontroller as soundcontroller;
-import fbinstant as fbinstant;
+import TitleScreen from 'src/TitleScreen';
+import GameScreen from 'src/GameScreen';
+import soundcontroller from 'src/soundcontroller';
 
 /* Your application inherits from GC.Application, which is
  * exported and instantiated when the game is run.
  */
-exports = Class(GC.Application, function () {
+export default class Application extends View {
 
 	/* Run after the engine is created and the scene graph is in
 	 * place, but before the resources have been loaded.
 	 */
-	this.initUI = function () {
-		fbinstant.initialise(bind(this, this.start));
+	initUI () {
+		//fbinstant.initialise(bind(this, this.start));
+
+		this.start();
 	};
 
-	this.start = function (opts) {
+	start (opts) {
 		var titlescreen = new TitleScreen(),
 				gamescreen = new GameScreen();
 
@@ -71,5 +73,5 @@ exports = Class(GC.Application, function () {
 	/* Executed after the asset resources have been loaded.
 	 * If there is a splash screen, it's removed.
 	 */
-	this.launchUI = function () {};
-});
+	launchUI () {};
+};

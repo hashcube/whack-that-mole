@@ -3,11 +3,11 @@
  * a scoreboard and a collection of molehills.
  */
 
-import animate;
-import ui.View;
-import ui.ImageView;
-import ui.TextView;
-import src.MoleHill as MoleHill;
+import animate from 'animate';
+import View from 'ui/View';
+import ImageView from 'ui/ImageView';
+import TextView from 'ui/TextView';
+import MoleHill from 'src/MoleHill';
 
 /* Some game constants.
  */
@@ -24,8 +24,8 @@ var score = 0,
  * By adding the scoreboard and the molehills as it's children,
  * everything is visible in the scene graph.
  */
-exports = Class(ui.View, function (supr) {
-	this.init = function (opts) {
+export default class GameScreen extends View {
+	constructor (opts) {
 		opts = merge(opts, {
 			x: 0,
 			y: 0,
@@ -33,7 +33,7 @@ exports = Class(ui.View, function (supr) {
 			height: 480,
 		});
 
-		supr(this, 'init', [opts]);
+		super(opts);
 
 		this.build();
 	};
@@ -41,7 +41,7 @@ exports = Class(ui.View, function (supr) {
 	/*
 	 * Layout the scoreboard and molehills.
 	 */
-	this.build = function () {
+	build () {
 		/* The start event is emitted from the start button via the main application.
 		 */
 		this.on('app:start', start_game_flow.bind(this));
@@ -108,7 +108,7 @@ exports = Class(ui.View, function (supr) {
 			opacity: 0.7
 		});
 	};
-});
+};
 
 /*
  * Game play

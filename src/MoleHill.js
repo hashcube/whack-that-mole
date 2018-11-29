@@ -1,8 +1,8 @@
-import animate;
-import ui.View;
-import ui.ImageView;
-import ui.resource.Image as Image;
-import src.soundcontroller as soundcontroller;
+import animate from 'animate';
+import View from 'ui/View';
+import ImageView from 'ui/ImageView';
+import Image from 'ui/resource/Image';
+import soundcontroller from 'src/soundcontroller';
 
 var mole_normal_img = new Image({url: "resources/images/mole_normal.png"}),
 		mole_hit_img = new Image({url: "resources/images/mole_hit.png"}),
@@ -11,15 +11,15 @@ var mole_normal_img = new Image({url: "resources/images/mole_normal.png"}),
 		mole_up = 5,
 		mole_down = 35;
 
-exports = Class(ui.View, function (supr) {
+export default class MoleHill extends View {
 
-	this.init = function (opts) {
+	constructor (opts) {
 		opts = merge(opts, {
 			width:	hole_back_img.getWidth(),
 			height: hole_back_img.getHeight() + mole_normal_img.getHeight()
 		});
 
-		supr(this, 'init', [opts]);
+		super(opts);
 
 		this.activeMole = false;
 		this.activeInput = false;
@@ -29,7 +29,7 @@ exports = Class(ui.View, function (supr) {
 
 	/* Set the mole as active and animate it up.
 	 */
-	this.showMole = function () {
+	showMole() {
 		if (this.activeMole === false) {
 			this.activeMole = true;
 			this.activeInput = true;
@@ -46,7 +46,7 @@ exports = Class(ui.View, function (supr) {
 
 	/* Set mole as inactive and animate it down.
 	 */
-	this.hitMole = function () {
+	hitMole () {
 		if (this.activeMole && this.activeInput) {
 			this.activeInput = false;
 
@@ -65,7 +65,7 @@ exports = Class(ui.View, function (supr) {
 
 	/* Ending animation, pop up and "laugh"
 	 */
-	this.endAnimation = function () {
+	endAnimation() {
 		this.activeInput = false;
 		this._animator.then({y: mole_up}, 2000)
 			.then(bind(this, function () {
@@ -81,7 +81,7 @@ exports = Class(ui.View, function (supr) {
 
 	/* Rest the molehill properties for the next game.
 	 */
-	this.resetMole = function () {
+	resetMole(){
 		clearInterval(this._interval);
 		this._animator.clear();
 		this._moleview.style.y = mole_down;
@@ -93,7 +93,7 @@ exports = Class(ui.View, function (supr) {
 	/*
 	 * Layout
 	 */
-	this.build = function () {
+	build() {
 		var hole_back = new ui.ImageView({
 			superview: this,
 			image: hole_back_img,
@@ -146,4 +146,4 @@ exports = Class(ui.View, function (supr) {
 			}
 		}));
 	};
-});
+};
