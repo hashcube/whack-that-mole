@@ -5,7 +5,6 @@
 
 import animate from 'animate';
 import View from 'ui/View';
-import ImageView from 'ui/ImageView';
 import TextView from 'ui/TextView';
 import MoleHill from 'src/MoleHill';
 
@@ -36,7 +35,7 @@ export default class GameScreen extends View {
 		super(opts);
 
 		this.build();
-	};
+	}
 
 	/*
 	 * Layout the scoreboard and molehills.
@@ -51,7 +50,7 @@ export default class GameScreen extends View {
 		 * it as a hidden property on our class since we'll use it
 		 * throughout the game.
 		 */
-		this._scoreboard = new ui.TextView({
+		this._scoreboard = new TextView({
 			superview: this,
 			x: 0,
 			y: 15,
@@ -96,7 +95,7 @@ export default class GameScreen extends View {
 		}
 
 		//Set up countdown timer
-		this._countdown = new ui.TextView({
+		this._countdown = new TextView({
 			superview: this._scoreboard,
 			visible: false,
 			x: 260,
@@ -107,8 +106,13 @@ export default class GameScreen extends View {
 			color: '#FFFFFF',
 			opacity: 0.7
 		});
+<<<<<<< Updated upstream
 	};
 };
+=======
+	}
+}
+>>>>>>> Stashed changes
 
 /*
  * Game play

@@ -20,26 +20,26 @@ export default class Application extends View {
 	 * place, but before the resources have been loaded.
 	 */
 	initUI () {
+		console.log("application.js called")
+		// Create a stackview of size 320x480, then scale it to fit horizontally
+		// Add a new StackView to the root of the scene graph
 		//fbinstant.initialise(bind(this, this.start));
-
 		this.start();
-	};
+	}
 
-	start (opts) {
+	start () {
+		this.view.style.backgroundColor = '#008a42';
+
 		var titlescreen = new TitleScreen(),
 				gamescreen = new GameScreen();
 
-		this.view.style.backgroundColor = '#008a42';
-
-
-		// Create a stackview of size 320x480, then scale it to fit horizontally
-		// Add a new StackView to the root of the scene graph
 		var rootView = new StackView({
 			superview: this,
 			// x: device.width / 2 - 160,
 			// y: device.height / 2 - 240,
-			x: 0,
-			y: 0,
+			top: 100,
+			//x: 0,
+			//y: 0,
 			width: 320,
 			height: 480,
 			clip: true,
@@ -68,10 +68,11 @@ export default class Application extends View {
 			sound.stop('levelmusic');
 			rootView.pop();
 		});
-	};
+	}
 
 	/* Executed after the asset resources have been loaded.
 	 * If there is a splash screen, it's removed.
 	 */
-	launchUI () {};
-};
+	launchUI () {
+  	}
+}

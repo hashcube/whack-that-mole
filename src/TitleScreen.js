@@ -13,7 +13,7 @@ import ImageView from 'ui/ImageView';
  * a child of the main application. When this class is instantiated,
  * it adds the start button as a child.
  */
-export default class TitleScreen extends View {
+export default class TitleScreen extends ImageView {
 	constructor (opts) {
 		opts = merge(opts, {
 			x: 0,
@@ -24,14 +24,14 @@ export default class TitleScreen extends View {
 		super(opts);
 
 		this.build();
-	};
+	}
 
 	build () {
 		/* Since the start button is a part the background image,
 		 * we just need to create and position an overlay view that
 		 * will register input events and act as button.
 		 */
-		var startbutton = new ui.View({
+		var startbutton = new View({
 			superview: this,
 			x: 58,
 			y: 313,
@@ -46,5 +46,5 @@ export default class TitleScreen extends View {
 		startbutton.on('InputSelect', bind(this, function () {
 			this.emit('titlescreen:start');
 		}));
-	};
-};
+	}
+}

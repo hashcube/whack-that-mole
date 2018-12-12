@@ -25,11 +25,11 @@ export default class MoleHill extends View {
 		this.activeInput = false;
 
 		this.build();
-	};
+	}
 
 	/* Set the mole as active and animate it up.
 	 */
-	showMole() {
+	showMole () {
 		if (this.activeMole === false) {
 			this.activeMole = true;
 			this.activeInput = true;
@@ -42,7 +42,7 @@ export default class MoleHill extends View {
 					this.activeMole = false;
 				}));
 		}
-	};
+	}
 
 	/* Set mole as inactive and animate it down.
 	 */
@@ -61,11 +61,11 @@ export default class MoleHill extends View {
 					this.activeInput = false;
 				}));
 		}
-	};
+	}
 
 	/* Ending animation, pop up and "laugh"
 	 */
-	endAnimation() {
+	endAnimation () {
 		this.activeInput = false;
 		this._animator.then({y: mole_up}, 2000)
 			.then(bind(this, function () {
@@ -77,24 +77,24 @@ export default class MoleHill extends View {
 					}
 				}), 100);
 			}));
-	};
+	}
 
 	/* Rest the molehill properties for the next game.
 	 */
-	resetMole(){
+	resetMole () {
 		clearInterval(this._interval);
 		this._animator.clear();
 		this._moleview.style.y = mole_down;
 		this._moleview.setImage(mole_normal_img);
 		this.activeMole = false;
 		this.activeInput = false;
-	};
+	}
 
 	/*
 	 * Layout
 	 */
-	build() {
-		var hole_back = new ui.ImageView({
+	build () {
+		var hole_back = new ImageView({
 			superview: this,
 			image: hole_back_img,
 			x: 0,
@@ -103,7 +103,7 @@ export default class MoleHill extends View {
 			height: hole_back_img.getHeight()
 		});
 
-		this._inputview = new ui.View({
+		this._inputview = new View({
 			superview: this,
 			clip: true,
 			x: hole_back_img.getWidth()/2 - mole_normal_img.getWidth()/2,
@@ -112,7 +112,7 @@ export default class MoleHill extends View {
 			height: 40
 		});
 
-		this._moleview = new ui.ImageView({
+		this._moleview = new ImageView({
 			superview: this._inputview,
 			image: mole_normal_img,
 			x: 0,
@@ -121,7 +121,7 @@ export default class MoleHill extends View {
 			height: mole_normal_img.getHeight()
 		});
 
-		var hole_front = new ui.ImageView({
+		var hole_front = new ImageView({
 			superview: this,
 			canHandleEvents: false,
 			image: hole_front_img,
@@ -145,5 +145,5 @@ export default class MoleHill extends View {
 				this.hitMole();
 			}
 		}));
-	};
-};
+	}
+}
